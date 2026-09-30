@@ -11,18 +11,21 @@ export default function ContactPage() {
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   useGSAP(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
     gsap.fromTo('.animate-hero', 
-      { y: 40, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.9, ease: "power3.out" }
     );
 
-    gsap.utils.toArray('.animate-hero').forEach((section: any) => {
+    gsap.utils.toArray('.animate-section').forEach((section: any) => {
       gsap.fromTo(section, 
-        { y: 40, opacity: 0 },
+        { y: 30, opacity: 0 },
         { 
           y: 0, 
           opacity: 1, 
-          duration: 1, 
+          duration: 0.9, 
           ease: "power3.out",
           scrollTrigger: {
             trigger: section,
@@ -59,13 +62,16 @@ export default function ContactPage() {
   };
 
   return (
-    <main ref={pageRef} className="flex-grow pt-20">
+    <main ref={pageRef} className="flex-grow pt-16 sm:pt-20">
       
       {/* Hero */}
-      <section className="pt-32 pb-24 bg-brand-light relative overflow-hidden">
-        <div className="max-w-4xl mx-auto px-6 text-center animate-section relative z-10">
-          <span className="uppercase tracking-[0.2em] text-brand-dark font-bold text-[11px] mb-8 block">Get In Touch</span>
-          <h1 className="text-4xl md:text-5xl lg:text-[4rem] font-serif text-brand-dark leading-[1.1] mb-8">
+      <section className="pt-24 sm:pt-32 pb-16 sm:pb-24 bg-brand-light relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-16 text-center animate-hero relative z-10">
+          <span className="uppercase tracking-[0.25em] text-brand-dark font-bold text-[11px] mb-4 sm:mb-6 block">Get In Touch</span>
+          <h1 
+            className="font-serif text-brand-dark leading-[1.1] mb-6 sm:mb-8"
+            style={{ fontSize: "clamp(2.2rem, 6vw, 4rem)" }}
+          >
             Let's start your wellness journey.
           </h1>
           <div className="w-16 h-[1px] bg-brand-gold mx-auto"></div>
@@ -73,68 +79,68 @@ export default function ContactPage() {
       </section>
 
       {/* Form + Details */}
-      <section className="py-24 bg-brand-light relative overflow-hidden border-b border-brand-border">
-        <div className="max-w-6xl mx-auto px-6 lg:px-12 animate-section relative z-10">
+      <section className="py-16 sm:py-24 bg-brand-light relative overflow-hidden border-b border-brand-border">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-16 animate-section relative z-10">
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
             
             {/* Form Column */}
             <div className="lg:col-span-7">
               {formStatus === 'success' ? (
-                <div className="bg-brand-sage/20 border border-brand-sage p-8 md:p-12 text-center h-full flex flex-col justify-center items-center">
+                <div className="bg-brand-sage/20 border border-brand-sage p-8 sm:p-12 text-center h-full flex flex-col justify-center items-center rounded-sm">
                   <h3 className="text-2xl font-serif text-brand-dark mb-4">Message Received</h3>
-                  <p className="text-brand-gray">Thank you for reaching out. We will get back to you shortly.</p>
+                  <p className="text-brand-gray text-base leading-relaxed">Thank you for reaching out. We will get back to you shortly.</p>
                   <button 
                     onClick={() => setFormStatus('idle')}
-                    className="mt-8 uppercase tracking-[0.2em] font-bold text-[11px] text-brand-dark hover:text-brand-gold transition-colors"
+                    className="mt-8 uppercase tracking-[0.2em] font-bold text-[11px] text-brand-dark hover:text-brand-gold transition-colors py-2 px-4 border border-brand-dark/20"
                   >
                     Send another message
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-8">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                     <div>
-                      <label htmlFor="name" className="block uppercase tracking-[0.2em] font-bold text-[10px] text-brand-dark mb-3">Name</label>
+                      <label htmlFor="name" className="block uppercase tracking-[0.2em] font-bold text-[10px] text-brand-dark mb-2">Name</label>
                       <input 
                         type="text" 
                         id="name" 
                         name="name" 
                         required
-                        className="w-full bg-transparent border-b border-brand-dark/20 py-3 text-brand-dark focus:outline-none focus:border-brand-gold transition-colors placeholder:text-brand-dark/30 rounded-none"
+                        className="w-full bg-transparent border-b border-brand-dark/20 min-h-[44px] py-2.5 text-base text-brand-dark focus:outline-none focus:border-brand-gold transition-colors placeholder:text-brand-dark/30 rounded-none"
                         placeholder="Your full name"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block uppercase tracking-[0.2em] font-bold text-[10px] text-brand-dark mb-3">Email</label>
+                      <label htmlFor="email" className="block uppercase tracking-[0.2em] font-bold text-[10px] text-brand-dark mb-2">Email</label>
                       <input 
                         type="email" 
                         id="email" 
                         name="email" 
                         required
-                        className="w-full bg-transparent border-b border-brand-dark/20 py-3 text-brand-dark focus:outline-none focus:border-brand-gold transition-colors placeholder:text-brand-dark/30 rounded-none"
+                        className="w-full bg-transparent border-b border-brand-dark/20 min-h-[44px] py-2.5 text-base text-brand-dark focus:outline-none focus:border-brand-gold transition-colors placeholder:text-brand-dark/30 rounded-none"
                         placeholder="your@email.com"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                     <div>
-                      <label htmlFor="phone" className="block uppercase tracking-[0.2em] font-bold text-[10px] text-brand-dark mb-3">Phone / WhatsApp</label>
+                      <label htmlFor="phone" className="block uppercase tracking-[0.2em] font-bold text-[10px] text-brand-dark mb-2">Phone / WhatsApp</label>
                       <input 
                         type="tel" 
                         id="phone" 
                         name="phone"
-                        className="w-full bg-transparent border-b border-brand-dark/20 py-3 text-brand-dark focus:outline-none focus:border-brand-gold transition-colors placeholder:text-brand-dark/30 rounded-none"
+                        className="w-full bg-transparent border-b border-brand-dark/20 min-h-[44px] py-2.5 text-base text-brand-dark focus:outline-none focus:border-brand-gold transition-colors placeholder:text-brand-dark/30 rounded-none"
                         placeholder="+91"
                       />
                     </div>
                     <div>
-                      <label htmlFor="goal" className="block uppercase tracking-[0.2em] font-bold text-[10px] text-brand-dark mb-3">What can we help you with?</label>
+                      <label htmlFor="goal" className="block uppercase tracking-[0.2em] font-bold text-[10px] text-brand-dark mb-2">What can we help you with?</label>
                       <select 
                         id="goal" 
                         name="goal"
-                        className="w-full bg-transparent border-b border-brand-dark/20 py-3 text-brand-dark focus:outline-none focus:border-brand-gold transition-colors rounded-none appearance-none cursor-pointer"
+                        className="w-full bg-transparent border-b border-brand-dark/20 min-h-[44px] py-2.5 text-base text-brand-dark focus:outline-none focus:border-brand-gold transition-colors rounded-none appearance-none cursor-pointer"
                       >
                         <option value="General Inquiry">General Inquiry</option>
                         <option value="Weight Management">Weight Management</option>
@@ -145,13 +151,13 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="block uppercase tracking-[0.2em] font-bold text-[10px] text-brand-dark mb-3">Message</label>
+                    <label htmlFor="message" className="block uppercase tracking-[0.2em] font-bold text-[10px] text-brand-dark mb-2">Message</label>
                     <textarea 
                       id="message" 
                       name="message" 
                       required
                       rows={4}
-                      className="w-full bg-transparent border-b border-brand-dark/20 py-3 text-brand-dark focus:outline-none focus:border-brand-gold transition-colors placeholder:text-brand-dark/30 resize-none rounded-none"
+                      className="w-full bg-transparent border-b border-brand-dark/20 py-2.5 text-base text-brand-dark focus:outline-none focus:border-brand-gold transition-colors placeholder:text-brand-dark/30 resize-none rounded-none"
                       placeholder="Tell us a little about your goals..."
                     ></textarea>
                   </div>
@@ -163,7 +169,7 @@ export default function ContactPage() {
                   <button 
                     type="submit" 
                     disabled={formStatus === 'submitting'}
-                    className="group inline-flex items-center justify-center bg-brand-dark text-brand-light px-10 py-5 hover:bg-brand-gold hover:text-brand-dark transition-all duration-300 font-bold uppercase tracking-[0.2em] text-[11px] w-full md:w-auto disabled:opacity-70"
+                    className="group inline-flex items-center justify-center bg-brand-dark text-brand-light px-8 sm:px-10 py-4 min-h-[48px] hover:bg-brand-gold hover:text-brand-dark transition-all duration-300 font-bold uppercase tracking-[0.2em] text-xs sm:text-[11px] w-full sm:w-auto disabled:opacity-70 text-center"
                   >
                     {formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
                   </button>
@@ -172,35 +178,35 @@ export default function ContactPage() {
             </div>
             
             {/* Details Column */}
-            <div className="lg:col-span-5 flex flex-col justify-start pt-4 lg:pt-0">
-              <div className="bg-brand-sage/10 border border-brand-border p-10 h-full">
-                <h3 className="text-2xl font-serif text-brand-dark mb-10">Contact Details</h3>
+            <div className="lg:col-span-5 flex flex-col justify-start">
+              <div className="bg-brand-sage/15 border border-brand-border p-6 sm:p-10 h-full rounded-sm">
+                <h3 className="text-xl sm:text-2xl font-serif text-brand-dark mb-6 sm:mb-8">Contact Details</h3>
                 
-                <div className="space-y-8">
+                <div className="space-y-6 sm:space-y-8">
                   <div>
-                    <span className="uppercase tracking-[0.2em] font-bold text-[10px] text-brand-gold mb-2 block">Email</span>
-                    <a href="#" className="text-brand-dark text-lg font-medium hover:text-brand-gold transition-colors">
-                      [Client Email]
+                    <span className="uppercase tracking-[0.2em] font-bold text-[10px] text-brand-gold mb-1.5 block">Email</span>
+                    <a href="mailto:contact@royalwellnesscentre.com" className="text-brand-dark text-base sm:text-lg font-medium hover:text-brand-gold transition-colors">
+                      contact@royalwellnesscentre.com
                     </a>
                   </div>
                   
                   <div>
-                    <span className="uppercase tracking-[0.2em] font-bold text-[10px] text-brand-gold mb-2 block">Phone / WhatsApp</span>
-                    <a href="#" className="text-brand-dark text-lg font-medium hover:text-brand-gold transition-colors">
-                      [Client Phone]
+                    <span className="uppercase tracking-[0.2em] font-bold text-[10px] text-brand-gold mb-1.5 block">Phone / WhatsApp</span>
+                    <a href="tel:+919876543210" className="text-brand-dark text-base sm:text-lg font-medium hover:text-brand-gold transition-colors">
+                      +91 98765 43210
                     </a>
                   </div>
                   
                   <div>
-                    <span className="uppercase tracking-[0.2em] font-bold text-[10px] text-brand-gold mb-2 block">Instagram</span>
-                    <a href="#" className="text-brand-dark text-lg font-medium hover:text-brand-gold transition-colors">
+                    <span className="uppercase tracking-[0.2em] font-bold text-[10px] text-brand-gold mb-1.5 block">Instagram</span>
+                    <a href="#" className="text-brand-dark text-base sm:text-lg font-medium hover:text-brand-gold transition-colors">
                       @royalwellnesscentre
                     </a>
                   </div>
                   
                   <div>
-                    <span className="uppercase tracking-[0.2em] font-bold text-[10px] text-brand-gold mb-2 block">Location</span>
-                    <p className="text-brand-gray text-lg font-medium leading-relaxed">
+                    <span className="uppercase tracking-[0.2em] font-bold text-[10px] text-brand-gold mb-1.5 block">Location</span>
+                    <p className="text-brand-gray text-base sm:text-lg font-medium leading-relaxed">
                       Online guidance available<br />
                       across India and worldwide.
                     </p>

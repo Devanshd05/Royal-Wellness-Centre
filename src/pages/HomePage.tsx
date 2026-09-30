@@ -3,6 +3,7 @@ import PhilosophySection from '../components/PhilosophySection';
 import ServicesSection from '../components/ServicesSection';
 import ApproachSection from '../components/ApproachSection';
 import FoundersSection from '../components/FoundersSection';
+import TransformationSection from '../components/TransformationSection';
 import CtaSection from '../components/CtaSection';
 import { ArrowRight } from 'lucide-react';
 
@@ -61,6 +62,7 @@ export default function HomePage() {
       <ServicesSection />
       <ApproachSection />
       <FoundersSection />
+      <TransformationSection />
       <CtaSection 
         heading="Ready to take the next step?"
         body="Get in touch with Royal Wellness Centre."

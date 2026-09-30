@@ -44,16 +44,23 @@ export default function Navbar() {
           
           {/* Logo */}
           <div className="flex-shrink-0 z-50">
-            <NavLink to="/" className="flex flex-col" onClick={() => handleNavClick('/')}>
-              <span className={clsx(
-                "font-serif text-xl sm:text-2xl tracking-wider uppercase leading-none transition-colors duration-500",
-                (isScrolled || isMobileMenuOpen) ? "text-brand-light" : "text-brand-dark"
-              )}>
-                Royal
-              </span>
-              <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-gold mt-1">
-                Wellness Centre
-              </span>
+            <NavLink to="/" className="flex items-center gap-2 sm:gap-3" onClick={() => handleNavClick('/')}>
+              <img 
+                src="/RWClogo.png" 
+                alt="Royal Wellness Centre"
+                className="h-8 sm:h-10 w-auto object-contain"
+              />
+              <div className="flex flex-col">
+                <span className={clsx(
+                  "font-serif text-xl sm:text-2xl tracking-wider uppercase leading-none transition-colors duration-500",
+                  (isScrolled || isMobileMenuOpen) ? "text-brand-light" : "text-brand-dark"
+                )}>
+                  Royal
+                </span>
+                <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-brand-gold mt-1">
+                  Wellness Centre
+                </span>
+              </div>
             </NavLink>
           </div>
 

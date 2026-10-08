@@ -40,11 +40,29 @@ export default function ServicesSection() {
       { y: 20, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power3.out", scrollTrigger: { trigger: '.services-grid', start: "top 85%" } }
     );
+    
+    // Parallax huge background element
+    gsap.to('.service-bg-element', {
+      y: -150,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
   }, { scope: sectionRef });
 
   return (
-    <section id="services" ref={sectionRef} className="py-16 sm:py-24 lg:py-32 bg-[#A8BA93] border-b border-brand-border/40">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-16 text-center">
+    <section id="services" ref={sectionRef} className="relative py-16 sm:py-24 lg:py-32 bg-[#A8BA93] border-b border-brand-border/40 overflow-hidden">
+      
+      {/* Massive Faint Background Icon */}
+      <div className="service-bg-element absolute -bottom-32 -right-32 text-brand-dark/5 pointer-events-none z-0">
+        <Leaf className="w-[500px] h-[500px] md:w-[800px] md:h-[800px] transform -rotate-45" strokeWidth={0.5} />
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-16 text-center">
         
         <div className="services-title mb-12 sm:mb-20">
           <span className="uppercase tracking-[0.25em] font-bold text-[11px] text-brand-dark/70 mb-4 block">What We Focus On</span>

@@ -21,6 +21,7 @@ export default {
       fontFamily: {
         sans: ['Manrope', 'Inter', 'sans-serif'],
         serif: ['"Cormorant Garamond"', 'serif'],
+        alt: ['Outfit', 'sans-serif'],
       }
     },
   },

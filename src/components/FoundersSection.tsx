@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import { Quote } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,8 +30,14 @@ export default function FoundersSection() {
   }, { scope: sectionRef });
 
   return (
-    <section ref={sectionRef} className="py-16 sm:py-24 lg:py-32 bg-brand-sea border-y border-brand-border">
-      <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-16">
+    <section ref={sectionRef} className="py-16 sm:py-24 lg:py-32 bg-brand-sea border-y border-brand-border relative overflow-hidden">
+      
+      {/* Decorative Oversized Quote */}
+      <div className="absolute -top-10 -left-10 md:-top-20 md:left-20 text-brand-dark opacity-[0.04] pointer-events-none z-0">
+        <Quote className="w-64 h-64 md:w-96 md:h-96" fill="currentColor" />
+      </div>
+
+      <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-16 relative z-10">
         <div className="text-center mb-12 sm:mb-16 founder-animate">
           <span className="uppercase tracking-[0.25em] font-bold text-[11px] text-brand-dark/70 mb-3 block">
             Leadership

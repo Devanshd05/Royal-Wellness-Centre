@@ -3,8 +3,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import CtaSection from '../components/CtaSection';
-import StickerGraphic from '../components/StickerGraphic';
-import { MessageCircle, MapPin } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 

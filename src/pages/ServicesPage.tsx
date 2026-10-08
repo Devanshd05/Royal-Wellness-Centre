@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import CtaSection from '../components/CtaSection';
 import StickerGraphic from '../components/StickerGraphic';
-import { Sparkles, Apple, Activity, Flame } from 'lucide-react';
+import { Flame } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 

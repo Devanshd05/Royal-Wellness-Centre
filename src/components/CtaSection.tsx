@@ -1,10 +1,9 @@
 import { useRef } from 'react';
-import { ArrowRight, Flame, Star } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import StickerGraphic from './StickerGraphic';
 
 gsap.registerPlugin(ScrollTrigger);
 

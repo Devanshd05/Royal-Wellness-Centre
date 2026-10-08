@@ -15,7 +15,6 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import StickerGraphic from './StickerGraphic';
-import { Heart } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 

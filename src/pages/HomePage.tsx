@@ -8,8 +8,7 @@ import ApproachSection from '../components/ApproachSection';
 import FoundersSection from '../components/FoundersSection';
 import TransformationSection from '../components/TransformationSection';
 import CtaSection from '../components/CtaSection';
-import StickerGraphic from '../components/StickerGraphic';
-import { ArrowRight, ChevronDown, Leaf, Apple, Flame } from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 
 export default function HomePage() {
   const heroRef = useRef(null);

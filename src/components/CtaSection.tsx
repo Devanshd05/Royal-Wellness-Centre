@@ -1,9 +1,10 @@
 import { useRef } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Flame, Star } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import StickerGraphic from './StickerGraphic';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -64,17 +65,21 @@ export default function CtaSection({
   }, { scope: sectionRef });
 
   return (
-    <section id="contact" ref={sectionRef} className="py-20 sm:py-28 lg:py-40 bg-brand-dark relative overflow-hidden flex flex-col items-center justify-center text-center">
+    <section id="contact" ref={sectionRef} className="relative flex flex-col items-center justify-center py-20 overflow-hidden text-center sm:py-28 lg:py-40 bg-brand-dark">
       
       {/* Oversized RWC Watermark & Ambient Green Glow */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden">
+      <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden pointer-events-none select-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[150%] max-w-[800px] bg-[#A8BA93]/10 blur-[120px] rounded-full"></div>
         <span className="text-[8rem] sm:text-[16rem] md:text-[22rem] lg:text-[28rem] font-serif text-brand-light opacity-[0.03] tracking-tighter leading-none select-none relative z-10">
           RWC
         </span>
       </div>
 
-      <div className="relative z-10 max-w-3xl mx-auto px-5 sm:px-8 lg:px-16 flex flex-col items-center w-full">
+      {/* Stickers */}
+      {/* <StickerGraphic Icon={Flame} className="top-10 left-4 sm:top-16 sm:left-1/4" bgColor="bg-[#F2F4EB]" iconColor="text-[#C6A15B]" rotation="-rotate-[10deg]" /> */}
+      {/* <StickerGraphic Icon={Star} className="bottom-16 right-4 sm:bottom-20 sm:right-1/4" bgColor="bg-[#2C4A3B]" iconColor="text-white" rotation="rotate-[12deg]" /> */}
+
+      <div className="relative z-10 flex flex-col items-center w-full max-w-3xl px-5 mx-auto sm:px-8 lg:px-16">
         
         <span className="cta-eyebrow opacity-0 uppercase tracking-[0.25em] text-brand-gold text-[11px] sm:text-xs font-bold mb-6 sm:mb-8 block">
           {eyebrow}
@@ -93,13 +98,13 @@ export default function CtaSection({
           </p>
         )}
         
-        <div className="cta-button opacity-0 translate-y-6 mb-16 sm:mb-20 w-full sm:w-auto flex justify-center">
+        <div className="flex justify-center w-full mb-16 translate-y-6 opacity-0 cta-button sm:mb-20 sm:w-auto">
           <NavLink 
             to="/contact" 
             className="group inline-flex items-center justify-center w-full sm:w-auto min-h-[48px] text-brand-dark bg-brand-light border border-brand-light px-8 sm:px-10 py-4 hover:shadow-[0_8px_30px_rgb(255,255,255,0.15)] hover:-translate-y-1 transition-all duration-300 font-bold uppercase tracking-[0.15em] text-xs sm:text-[13px] text-center"
           >
             {buttonText}
-            <ArrowRight className="w-4 h-4 ml-3 sm:ml-4 transition-transform duration-300 group-hover:translate-x-2" />
+            <ArrowRight className="w-4 h-4 ml-3 transition-transform duration-300 sm:ml-4 group-hover:translate-x-2" />
           </NavLink>
         </div>
         

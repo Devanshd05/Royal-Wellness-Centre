@@ -3,6 +3,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import CtaSection from '../components/CtaSection';
+import StickerGraphic from '../components/StickerGraphic';
+import { MessageCircle, MapPin } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -65,8 +67,17 @@ export default function ContactPage() {
     <main ref={pageRef} className="flex-grow pt-16 sm:pt-20">
       
       {/* Hero */}
-      <section className="pt-24 sm:pt-32 pb-16 sm:pb-24 bg-brand-light relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-16 text-center animate-hero relative z-10">
+      <section className="pt-24 sm:pt-32 pb-16 sm:pb-24 bg-gradient-to-tr from-[#FCF9F2] via-[#F2E8D5] to-[#E2EAE5] relative overflow-hidden">
+        {/* Massive Watermark */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[8rem] sm:text-[12rem] md:text-[16rem] font-serif font-bold text-brand-dark opacity-5 pointer-events-none select-none tracking-tight whitespace-nowrap">
+          CONTACT
+        </div>
+
+        {/* Stickers */}
+        {/* <StickerGraphic Icon={MessageCircle} className="top-[10%] left-[5%] sm:top-[20%] sm:left-[15%]" bgColor="bg-[#C6A15B]" iconColor="text-white" rotation="-rotate-6" />
+        <StickerGraphic Icon={MapPin} className="bottom-[15%] right-[10%] sm:bottom-[20%] sm:right-[20%]" bgColor="bg-[#2C4A3B]" iconColor="text-white" rotation="rotate-[15deg]" /> */}
+
+        <div className="relative z-10 px-5 mx-auto text-center max-w-7xl sm:px-8 lg:px-16 animate-hero">
           <span className="uppercase tracking-[0.25em] text-brand-dark font-bold text-[11px] mb-4 sm:mb-6 block">Get In Touch</span>
           <h1 
             className="font-serif text-brand-dark leading-[1.1] mb-6 sm:mb-8"
@@ -79,27 +90,27 @@ export default function ContactPage() {
       </section>
 
       {/* Form + Details */}
-      <section className="py-16 sm:py-24 bg-brand-light relative overflow-hidden border-b border-brand-border">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-16 animate-section relative z-10">
+      <section className="relative py-16 overflow-hidden border-b sm:py-24 bg-[#A8BA93] border-brand-border">
+        <div className="relative z-10 px-5 mx-auto max-w-7xl sm:px-8 lg:px-16 animate-section">
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-20">
             
             {/* Form Column */}
             <div className="lg:col-span-7">
               {formStatus === 'success' ? (
-                <div className="bg-brand-sage/20 border border-brand-sage p-8 sm:p-12 text-center h-full flex flex-col justify-center items-center rounded-sm">
-                  <h3 className="text-2xl font-serif text-brand-dark mb-4">Message Received</h3>
-                  <p className="text-brand-gray text-base leading-relaxed">Thank you for reaching out. We will get back to you shortly.</p>
+                <div className="bg-[#EAF3EF] border border-[#CDE4DB] p-8 sm:p-12 text-center h-full flex flex-col justify-center items-center rounded-3xl">
+                  <h3 className="text-2xl font-serif text-[#2C4A3B] mb-4">Message Received</h3>
+                  <p className="text-base leading-relaxed text-brand-dark/70">Thank you for reaching out. We will get back to you shortly.</p>
                   <button 
                     onClick={() => setFormStatus('idle')}
-                    className="mt-8 uppercase tracking-[0.2em] font-bold text-[11px] text-brand-dark hover:text-brand-gold transition-colors py-2 px-4 border border-brand-dark/20"
+                    className="mt-8 uppercase tracking-[0.2em] font-bold text-[11px] text-[#2C4A3B] hover:text-brand-gold transition-colors py-2 px-4 border border-[#2C4A3B]/20 rounded-full"
                   >
                     Send another message
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                <form onSubmit={handleSubmit} className="p-8 space-y-6 bg-white border shadow-sm sm:space-y-8 sm:p-10 rounded-3xl border-brand-dark/5">
+                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 sm:gap-8">
                     <div>
                       <label htmlFor="name" className="block uppercase tracking-[0.2em] font-bold text-[10px] text-brand-dark mb-2">Name</label>
                       <input 
@@ -124,7 +135,7 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2 sm:gap-8">
                     <div>
                       <label htmlFor="phone" className="block uppercase tracking-[0.2em] font-bold text-[10px] text-brand-dark mb-2">Phone / WhatsApp</label>
                       <input 
@@ -163,13 +174,13 @@ export default function ContactPage() {
                   </div>
 
                   {formStatus === 'error' && (
-                    <p className="text-red-500 text-sm font-medium">There was a problem sending your message. Please try again.</p>
+                    <p className="text-sm font-medium text-red-500">There was a problem sending your message. Please try again.</p>
                   )}
 
                   <button 
                     type="submit" 
                     disabled={formStatus === 'submitting'}
-                    className="group inline-flex items-center justify-center bg-brand-dark text-brand-light px-8 sm:px-10 py-4 min-h-[48px] hover:bg-brand-gold hover:text-brand-dark transition-all duration-300 font-bold uppercase tracking-[0.2em] text-xs sm:text-[11px] w-full sm:w-auto disabled:opacity-70 text-center"
+                    className="group inline-flex items-center justify-center bg-[#C6A15B] text-white px-8 sm:px-10 py-4 min-h-[48px] hover:bg-brand-dark hover:text-white transition-all duration-300 font-bold uppercase tracking-[0.2em] text-xs sm:text-[11px] w-full sm:w-auto disabled:opacity-70 text-center shadow-lg hover:shadow-xl rounded-full"
                   >
                     {formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
                   </button>
@@ -178,35 +189,38 @@ export default function ContactPage() {
             </div>
             
             {/* Details Column */}
-            <div className="lg:col-span-5 flex flex-col justify-start">
-              <div className="bg-brand-sage/15 border border-brand-border p-6 sm:p-10 h-full rounded-sm">
-                <h3 className="text-xl sm:text-2xl font-serif text-brand-dark mb-6 sm:mb-8">Contact Details</h3>
+            <div className="flex flex-col justify-start lg:col-span-5">
+              <div className="bg-[#16271D] text-white p-8 sm:p-12 h-full rounded-3xl shadow-xl relative overflow-hidden">
+                {/* Glow */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#A8BA93]/20 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+
+                <h3 className="relative z-10 mb-8 font-serif text-2xl sm:text-3xl sm:mb-12">Contact Details</h3>
                 
-                <div className="space-y-6 sm:space-y-8">
+                <div className="relative z-10 space-y-8 sm:space-y-10">
                   <div>
-                    <span className="uppercase tracking-[0.2em] font-bold text-[10px] text-brand-gold mb-1.5 block">Email</span>
-                    <a href="mailto:contact@royalwellnesscentre.com" className="text-brand-dark text-base sm:text-lg font-medium hover:text-brand-gold transition-colors">
+                    <span className="uppercase tracking-[0.2em] font-bold text-[10px] text-brand-gold mb-2 block">Email</span>
+                    <a href="mailto:contact@royalwellnesscentre.com" className="text-lg font-medium transition-colors text-white/90 sm:text-xl hover:text-brand-gold">
                       contact@royalwellnesscentre.com
                     </a>
                   </div>
                   
                   <div>
-                    <span className="uppercase tracking-[0.2em] font-bold text-[10px] text-brand-gold mb-1.5 block">Phone / WhatsApp</span>
-                    <a href="tel:+919876543210" className="text-brand-dark text-base sm:text-lg font-medium hover:text-brand-gold transition-colors">
+                    <span className="uppercase tracking-[0.2em] font-bold text-[10px] text-brand-gold mb-2 block">Phone / WhatsApp</span>
+                    <a href="tel:+919876543210" className="text-lg font-medium transition-colors text-white/90 sm:text-xl hover:text-brand-gold">
                       +91 98765 43210
                     </a>
                   </div>
                   
                   <div>
-                    <span className="uppercase tracking-[0.2em] font-bold text-[10px] text-brand-gold mb-1.5 block">Instagram</span>
-                    <a href="#" className="text-brand-dark text-base sm:text-lg font-medium hover:text-brand-gold transition-colors">
+                    <span className="uppercase tracking-[0.2em] font-bold text-[10px] text-brand-gold mb-2 block">Instagram</span>
+                    <a href="#" className="text-lg font-medium transition-colors text-white/90 sm:text-xl hover:text-brand-gold">
                       @royalwellnesscentre
                     </a>
                   </div>
                   
                   <div>
-                    <span className="uppercase tracking-[0.2em] font-bold text-[10px] text-brand-gold mb-1.5 block">Location</span>
-                    <p className="text-brand-gray text-base sm:text-lg font-medium leading-relaxed">
+                    <span className="uppercase tracking-[0.2em] font-bold text-[10px] text-brand-gold mb-2 block">Location</span>
+                    <p className="text-lg font-medium leading-relaxed text-white/70 sm:text-xl">
                       Online guidance available<br />
                       across India and worldwide.
                     </p>

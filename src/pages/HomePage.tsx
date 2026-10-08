@@ -70,8 +70,8 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Hero Stickers
-          <StickerGraphic 
+          {/* Hero Stickers */}
+          {/* <StickerGraphic 
             Icon={Leaf} 
             className="top-[15%] right-[5%] sm:top-[20%] sm:right-[15%]" 
             bgColor="bg-[#A8BA93]" 

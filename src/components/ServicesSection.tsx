@@ -14,6 +14,8 @@ import { NavLink } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import StickerGraphic from './StickerGraphic';
+import { Heart } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -58,13 +60,17 @@ export default function ServicesSection() {
     <section id="services" ref={sectionRef} className="relative py-16 sm:py-24 lg:py-32 bg-[#A8BA93] border-b border-brand-border/40 overflow-hidden">
       
       {/* Massive Faint Background Icon */}
-      <div className="service-bg-element absolute -bottom-32 -right-32 text-brand-dark/5 pointer-events-none z-0">
+      <div className="absolute z-0 pointer-events-none service-bg-element -bottom-32 -right-32 text-brand-dark/5">
         <Leaf className="w-[500px] h-[500px] md:w-[800px] md:h-[800px] transform -rotate-45" strokeWidth={0.5} />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-16 text-center">
+      {/* Stickers */}
+      <StickerGraphic Icon={Dumbbell} className="top-10 left-4 sm:top-24 sm:left-24" bgColor="bg-white" iconColor="text-[#2C4A3B]" rotation="rotate-[15deg]" />
+      {/* <StickerGraphic Icon={Heart} className="bottom-16 right-4 sm:bottom-32 sm:right-24" bgColor="bg-[#C6A15B]" iconColor="text-white" rotation="-rotate-[10deg]" /> */}
+
+      <div className="relative z-10 px-5 mx-auto text-center max-w-7xl sm:px-8 lg:px-16">
         
-        <div className="services-title mb-12 sm:mb-20">
+        <div className="mb-12 services-title sm:mb-20">
           <span className="uppercase tracking-[0.25em] font-bold text-[11px] text-brand-dark/70 mb-4 block">What We Focus On</span>
           <h2 
             className="font-serif text-brand-dark"
@@ -74,7 +80,7 @@ export default function ServicesSection() {
           </h2>
         </div>
 
-        <div className="services-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8 mb-16 sm:mb-24 text-left">
+        <div className="grid grid-cols-1 gap-5 mb-16 text-left services-grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-6 lg:gap-8 sm:mb-24">
           {services.map((service, idx) => {
             const Icon = service.icon;
             return (
@@ -83,16 +89,16 @@ export default function ServicesSection() {
                 className="service-item relative bg-white/60 backdrop-blur-md rounded-2xl border border-white/40 p-6 sm:p-7 hover:bg-white hover:border-brand-gold/30 hover:shadow-[0_8px_30px_rgb(198,161,91,0.1)] hover:-translate-y-1 transition-all duration-500 group flex flex-col overflow-hidden"
               >
                 <div className="mb-4">
-                  <span className="font-mono text-brand-dark/30 text-sm font-medium">
+                  <span className="font-mono text-sm font-medium text-brand-dark/30">
                     {String(idx + 1).padStart(2, '0')}
                   </span>
                 </div>
                 
-                <div className="flex items-center sm:items-start gap-4">
+                <div className="flex items-center gap-4 sm:items-start">
                   <div className="p-2 rounded-lg bg-[#A8BA93]/30 text-brand-gold group-hover:bg-brand-gold group-hover:text-white transition-colors duration-500 shrink-0">
                     <Icon className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-base font-bold uppercase tracking-wider text-brand-dark leading-snug group-hover:text-brand-gold transition-colors duration-300">
+                  <h3 className="text-base font-bold leading-snug tracking-wider uppercase transition-colors duration-300 text-brand-dark group-hover:text-brand-gold">
                     {service.title}
                   </h3>
                 </div>
@@ -104,7 +110,7 @@ export default function ServicesSection() {
           })}
         </div>
 
-        <div className="services-title flex justify-center">
+        <div className="flex justify-center services-title">
           <NavLink 
             to="/services" 
             className="inline-flex items-center justify-center text-brand-dark border border-brand-dark px-8 py-4 min-h-[48px] w-full sm:w-auto hover:bg-brand-dark hover:text-brand-light transition-all duration-300 font-bold uppercase tracking-widest text-xs sm:text-sm group text-center"

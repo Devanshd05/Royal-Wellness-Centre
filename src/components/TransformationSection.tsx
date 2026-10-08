@@ -2,6 +2,8 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
+import StickerGraphic from './StickerGraphic';
+import { Award, Leaf } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -53,6 +55,10 @@ export default function TransformationSection() {
         RESULTS
       </div>
       
+      {/* Stickers */}
+      <StickerGraphic Icon={Award} className="top-16 right-4 sm:top-32 sm:right-32" bgColor="bg-[#C6A15B]" iconColor="text-white" rotation="rotate-[20deg]" />
+      <StickerGraphic Icon={Leaf} className="bottom-20 left-4 sm:bottom-24 sm:left-32" bgColor="bg-[#A8BA93]" iconColor="text-white" rotation="-rotate-[15deg]" />
+
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-16">
         <div className="mb-12 sm:mb-16 md:mb-20 relative">
           

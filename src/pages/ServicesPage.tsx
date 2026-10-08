@@ -3,17 +3,19 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import CtaSection from '../components/CtaSection';
+import StickerGraphic from '../components/StickerGraphic';
+import { Sparkles, Apple, Activity, Flame } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const coreFocus = [
-  { id: '01', title: 'Personalised Nutrition & Diet Guidance' },
-  { id: '02', title: 'Weight-Management Support' },
-  { id: '03', title: 'Fitness & Workout Guidance' },
-  { id: '04', title: 'Healthy Lifestyle Planning' },
-  { id: '05', title: 'Body Transformation Support' },
-  { id: '06', title: 'Wellness Education' },
-  { id: '07', title: 'Motivation, Accountability & Consistency' }
+  { id: '01', title: 'Personalised Nutrition & Diet Guidance', color: 'bg-[#EAF3EF] text-[#2C4A3B]' },
+  { id: '02', title: 'Weight-Management Support', color: 'bg-[#F2F4EB] text-[#4A6B53]' },
+  { id: '03', title: 'Fitness & Workout Guidance', color: 'bg-[#FCF9F2] text-[#C6A15B]' },
+  { id: '04', title: 'Healthy Lifestyle Planning', color: 'bg-[#E2EAE5] text-[#2C4A3B]' },
+  { id: '05', title: 'Body Transformation Support', color: 'bg-[#F2E8D5] text-[#C6A15B]' },
+  { id: '06', title: 'Wellness Education', color: 'bg-[#EAF3EF] text-[#4A6B53]' },
+  { id: '07', title: 'Motivation, Accountability & Consistency', color: 'bg-[#DCE2C6] text-[#2C4A3B]' }
 ];
 
 export default function ServicesPage() {
@@ -49,8 +51,17 @@ export default function ServicesPage() {
     <main ref={pageRef} className="flex-grow pt-16 sm:pt-20">
       
       {/* Hero */}
-      <section className="pt-24 sm:pt-32 pb-16 sm:pb-24 bg-brand-light relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-16 text-center animate-hero relative z-10">
+      <section className="pt-24 sm:pt-32 pb-16 sm:pb-24 bg-gradient-to-bl from-[#CDE4DB] via-[#E2EAE5] to-brand-light relative overflow-hidden">
+        {/* Massive Watermark */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[8rem] sm:text-[12rem] md:text-[16rem] font-serif font-bold text-brand-dark opacity-[0.03] pointer-events-none select-none tracking-tight whitespace-nowrap">
+          SERVICES
+        </div>
+
+        {/* Stickers */}
+        {/* <StickerGraphic Icon={Sparkles} className="top-[10%] left-[5%] sm:top-[20%] sm:left-[15%]" bgColor="bg-[#F2E8D5]" iconColor="text-[#C6A15B]" rotation="rotate-12" />
+        <StickerGraphic Icon={Apple} className="bottom-[15%] right-[10%] sm:bottom-[20%] sm:right-[20%]" bgColor="bg-[#C6A15B]" iconColor="text-white" rotation="-rotate-[15deg]" /> */}
+
+        <div className="relative z-10 px-5 mx-auto text-center max-w-7xl sm:px-8 lg:px-16 animate-hero">
           <span className="uppercase tracking-[0.25em] text-brand-dark font-bold text-[11px] mb-4 sm:mb-6 block">Our Services</span>
           <h1 
             className="font-serif text-brand-dark leading-[1.1] mb-6 sm:mb-8"
@@ -63,9 +74,12 @@ export default function ServicesPage() {
       </section>
 
       {/* Core Focus List */}
-      <section className="py-16 sm:py-24 bg-brand-light relative overflow-hidden">
-        <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-16 relative z-10">
-          <div className="text-center mb-12 sm:mb-16 animate-section">
+      <section className="relative py-16 overflow-hidden sm:py-24 bg-brand-light">
+        {/* Stickers */}
+        {/* <StickerGraphic Icon={Activity} className="top-[30%] left-[5%] sm:left-[10%]" bgColor="bg-[#A8BA93]" iconColor="text-white" rotation="-rotate-6" /> */}
+        
+        <div className="relative z-10 max-w-5xl px-5 mx-auto sm:px-8 lg:px-16">
+          <div className="mb-12 text-center sm:mb-16 animate-section">
             <span className="uppercase tracking-[0.25em] font-bold text-[11px] text-brand-gold mb-3 block">Specialisations</span>
             <h2 
               className="font-serif text-brand-dark"
@@ -77,11 +91,11 @@ export default function ServicesPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 sm:gap-y-8">
             {coreFocus.map((item) => (
-              <div key={item.id} className="animate-section border-b border-brand-dark/10 pb-5 sm:pb-6 flex items-start group">
-                <span className="font-mono text-brand-gold text-xs sm:text-sm mr-4 sm:mr-6 mt-1 group-hover:text-brand-dark transition-colors duration-300">
+              <div key={item.id} className={`animate-section p-6 rounded-[2rem] flex items-center group transition-transform duration-300 hover:-translate-y-1 ${item.color}`}>
+                <span className="mr-4 font-mono text-xs transition-colors text-brand-dark/40 sm:text-sm sm:mr-6 group-hover:text-brand-dark/70">
                   {item.id}
                 </span>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-serif text-brand-dark leading-snug">
+                <h3 className="font-serif text-lg font-bold leading-snug sm:text-xl">
                   {item.title}
                 </h3>
               </div>
@@ -91,11 +105,16 @@ export default function ServicesPage() {
       </section>
 
       {/* Personalisation */}
-      <section className="py-16 sm:py-24 lg:py-32 bg-brand-sage text-center border-y border-brand-border">
-        <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-16 animate-section">
-          <span className="uppercase tracking-[0.25em] font-bold text-[11px] text-brand-dark mb-6 sm:mb-8 block">Personalised to your journey</span>
+      <section className="py-16 sm:py-24 lg:py-32 bg-[#A8BA93] text-center border-y border-brand-border relative overflow-hidden">
+        {/* Subtle pattern */}
+        <div className="absolute inset-0 pointer-events-none opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #ffffff 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
+        
+        <StickerGraphic Icon={Flame} className="top-10 right-10 sm:top-20 sm:right-1/4" bgColor="bg-white" iconColor="text-[#C6A15B]" rotation="rotate-[25deg]" />
+
+        <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-16 animate-section relative z-10 bg-white/20 backdrop-blur-md p-10 sm:p-16 rounded-[3rem] border border-white/40 shadow-xl">
+          <span className="uppercase tracking-[0.25em] font-bold text-[11px] text-[#2C4A3B] mb-6 sm:mb-8 block">Personalised to your journey</span>
           <h2 
-            className="font-serif text-brand-dark leading-relaxed"
+            className="font-serif text-[#16271D] leading-relaxed"
             style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.25rem)" }}
           >
             Whether your goal is weight management, healthy weight gain, fitness, nutrition, body transformation, or overall wellness, our approach focuses on practical and sustainable habits.
@@ -104,10 +123,14 @@ export default function ServicesPage() {
       </section>
 
       {/* Online Guidance */}
-      <section className="py-20 sm:py-28 lg:py-36 bg-brand-light text-center relative overflow-hidden border-b border-brand-border">
-        <div className="max-w-4xl mx-auto px-5 sm:px-8 lg:px-16 animate-section relative z-10">
+      <section className="py-20 sm:py-28 lg:py-36 bg-[#16271D] text-center relative overflow-hidden border-b border-brand-border">
+        {/* Colorful Glows */}
+        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-[#A8BA93]/20 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+        <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-[#C6A15B]/20 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+
+        <div className="relative z-10 max-w-4xl px-5 mx-auto sm:px-8 lg:px-16 animate-section">
           <h2 
-            className="font-serif text-brand-dark leading-relaxed"
+            className="font-serif leading-relaxed text-white drop-shadow-sm"
             style={{ fontSize: "clamp(1.85rem, 5vw, 3.25rem)" }}
           >
             Online guidance available across <span className="text-brand-gold">India</span> and <span className="text-brand-gold">worldwide</span>.

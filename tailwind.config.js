@@ -14,6 +14,8 @@ export default {
           gray: '#6F6F69',
           border: '#DEDED8',
           sage: '#AAB8B2',
+          olive: '#A8BA93',
+          sea: '#CDE4DB',
         }
       },
       fontFamily: {

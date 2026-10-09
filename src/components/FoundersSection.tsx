@@ -72,7 +72,7 @@ export default function FoundersSection() {
               </div>
             </div>
             <h3 className="font-serif text-sm font-bold tracking-widest uppercase transition-colors duration-300 text-brand-dark sm:text-base group-hover:text-brand-gold">
-              Founder
+              Jaswinder Kaur
             </h3>
           </div>
 
@@ -93,7 +93,7 @@ export default function FoundersSection() {
               </div>
             </div>
             <h3 className="font-serif text-sm font-bold tracking-widest uppercase transition-colors duration-300 text-brand-dark sm:text-base group-hover:text-brand-gold">
-              Co-Founder
+              Karanpreet Singh
             </h3>
           </div>
         </div>

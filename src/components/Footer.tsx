@@ -39,7 +39,7 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-between pt-8 sm:pt-10 border-t border-brand-light/10 text-[11px] font-semibold tracking-widest uppercase text-brand-light/40 text-center sm:text-left gap-4">
-          <p>Nutrition for everyday living.</p>
+          <p>Designed by Identa</p>
           <p>&copy; {new Date().getFullYear()} Royal Wellness Centre. All rights reserved.</p>
         </div>
       </div>
